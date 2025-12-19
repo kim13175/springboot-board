@@ -1,5 +1,30 @@
 package com.example.cmcboard.domain.Entity;
 
-public class post {
+import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
+@Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
+public class post {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Id;
+
+    @Column(nullable = false)
+    private String title;
+
+    @Column(columnDefinition = "TEXT", nullable = false)
+    private String content;
+
+    @Column(nullable = false)
+    private String author;
+
+    @Column(nullable = false)
+    private String category;
+
+    @Column(nullable = false)
+    private Boolean bookmarked;
 }
