@@ -13,12 +13,12 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor // post repo 자동 주입
-public class postService {
+public class PostService {
     private final PostRepository postRepository;
 
     @Transactional
-    public PostFromDto createPost(PostToEntity request) {
-        Post post = postRepository.save(request.toEntity());
+    public PostFromDto createPost(PostToEntity request, Long authorId) {
+        Post post = postRepository.save(request.toEntity(authorId));
         return PostFromDto.from(post);
     }
 
@@ -26,6 +26,8 @@ public class postService {
     public void updatePost(Long postId, PostToEntity request) {
         Post post = postRepository.findById(postId)
                 .orElseThrow(() -> new IllegalArgumentException("게시글이 존재하지 않습니다."));
+
+        post.update(request.getTitle(), request.getContent(), request.getCategory());
     }
 
     @Transactional
