@@ -12,7 +12,7 @@ public class PostFromDto {
     private Long id;
     private String title;
     private String content;
-    private String author;
+    private Long authorId;
     private String category;
     private Boolean bookmarked;
 
@@ -21,7 +21,7 @@ public class PostFromDto {
                 .id(post.getId())
                 .title(post.getTitle())
                 .content(post.getContent())
-                .author(post.getAuthor())
+                .authorId(post.getAuthorId())
                 .category(post.getCategory())
                 .bookmarked(post.getBookmarked())
                 .build();

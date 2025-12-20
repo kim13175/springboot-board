@@ -10,7 +10,7 @@ import lombok.*;
 public class PostToEntity {
     private String title;
     private String content;
-    private String author;
+    private Long authorId;
     private String category;
     private Boolean bookmarked;
 
@@ -18,7 +18,7 @@ public class PostToEntity {
         return Post.builder()
                 .title(this.title)
                 .content(this.content)
-                .author(this.author)
+                .authorId(this.authorId)
                 .category(this.category)
                 .bookmarked(this.bookmarked)
                 .build();

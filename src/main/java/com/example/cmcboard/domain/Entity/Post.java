@@ -20,11 +20,21 @@ public class Post {
     private String content;
 
     @Column(nullable = false)
-    private String author;
+    private Long authorId;
 
     @Column(nullable = false)
     private String category;
 
     @Column(nullable = false)
-    private Boolean bookmarked;
+    private Boolean bookmarked = false;
+
+    public void update(String title, String content, String category) {
+        this.title = title;
+        this.content = content;
+        this.category = category;
+    }
+
+    public void toggleBookmarked() {
+        this.bookmarked = !this.bookmarked;
+    }
 }
