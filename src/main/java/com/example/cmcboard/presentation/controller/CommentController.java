@@ -1,6 +1,6 @@
 package com.example.cmcboard.presentation.controller;
 
-import com.example.cmcboard.application.CommentService;
+import com.example.cmcboard.application.service.CommentService;
 import com.example.cmcboard.presentation.dto.from.CommentFromDto;
 import com.example.cmcboard.presentation.dto.to.CommentToEntity;
 import lombok.RequiredArgsConstructor;

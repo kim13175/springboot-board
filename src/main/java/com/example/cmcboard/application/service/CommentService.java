@@ -1,4 +1,4 @@
-package com.example.cmcboard.application;
+package com.example.cmcboard.application.service;
 
 import com.example.cmcboard.domain.Entity.Comment;
 import com.example.cmcboard.domain.Entity.Post;
