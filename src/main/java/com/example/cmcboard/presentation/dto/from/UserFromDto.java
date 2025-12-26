@@ -3,8 +3,10 @@ package com.example.cmcboard.presentation.dto.from;
 import com.example.cmcboard.domain.Entity.User;
 import com.example.cmcboard.domain.Entity.UserRole;
 import lombok.Builder;
+import lombok.Getter;
 
 @Builder
+@Getter
 public class UserFromDto {
     private Long userId;
     private String loginId;

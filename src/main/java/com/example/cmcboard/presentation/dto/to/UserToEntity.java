@@ -13,10 +13,10 @@ public class UserToEntity {
     private String password;
     private String userName;
 
-    public User toEntity(Long userId, UserRole role) {
+    public User toEntity(String encodingPassword, UserRole role) {
         return User.builder()
                 .loginId(this.loginId)
-                .password(this.password)
+                .password(encodingPassword)
                 .userName(this.userName)
                 .role(role)
                 .build();
