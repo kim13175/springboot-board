@@ -1,11 +1,14 @@
 package com.example.cmcboard.presentation.controller;
 
 import com.example.cmcboard.application.service.CommentService;
+import com.example.cmcboard.domain.Entity.User;
+import com.example.cmcboard.global.security.CustomUserDetail;
 import com.example.cmcboard.presentation.dto.from.CommentFromDto;
 import com.example.cmcboard.presentation.dto.to.CommentToEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -43,8 +46,11 @@ public class CommentController {
 
     // 댓글 및 답글 삭제: /api/comments/delete?commentId=1
     @PostMapping("/delete")
-    public ResponseEntity<String> delete(@RequestParam Long commentId) {
-        commentService.deleteComment(commentId);
+    public ResponseEntity<String> delete(
+            @RequestParam Long commentId,
+            @AuthenticationPrincipal CustomUserDetail userDetail
+    ) {
+        commentService.deleteComment(commentId, userDetail.getUserId());
         return ResponseEntity.ok("댓글 삭제 완료");
     }
 }

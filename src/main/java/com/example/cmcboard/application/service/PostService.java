@@ -31,9 +31,13 @@ public class PostService {
     }
 
     @Transactional
-    public void deletePost(Long postId) {
+    public void deletePost(Long postId, Long userId) {
         Post post = postRepository.findById(postId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다."));
+
+        if (!post.getAuthorId().equals(userId)) {
+            throw new RuntimeException("본인이 작성한 게시글만 삭제할 수 있습니다.");
+        }
 
         postRepository.delete(post);
     }
