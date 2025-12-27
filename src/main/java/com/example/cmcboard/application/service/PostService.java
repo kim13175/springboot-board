@@ -1,7 +1,9 @@
 package com.example.cmcboard.application.service;
 
 import com.example.cmcboard.domain.Entity.Post;
+import com.example.cmcboard.domain.Entity.User;
 import com.example.cmcboard.domain.repository.PostRepository;
+import com.example.cmcboard.domain.repository.UserRepository;
 import com.example.cmcboard.presentation.dto.from.PostFromDto;
 import com.example.cmcboard.presentation.dto.to.PostToEntity;
 import lombok.RequiredArgsConstructor;
@@ -15,11 +17,18 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor // post repo 자동 주입
 public class PostService {
     private final PostRepository postRepository;
+    private final UserRepository userRepository;
 
     @Transactional
-    public PostFromDto createPost(PostToEntity request, Long authorId) {
-        Post post = postRepository.save(request.toEntity(authorId));
-        return PostFromDto.from(post);
+    public PostFromDto createPost(PostToEntity requestDto, Long authorId) {
+        User user = userRepository.findById(authorId)
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 유저입니다."));
+
+        Post post = requestDto.toEntity(user);
+
+        Post savedPost = postRepository.save(post);
+
+        return PostFromDto.from(savedPost);
     }
 
     @Transactional
@@ -35,7 +44,7 @@ public class PostService {
         Post post = postRepository.findById(postId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다."));
 
-        if (!post.getAuthorId().equals(userId)) {
+        if (!post.getUser().getUserId().equals(userId)) {
             throw new RuntimeException("본인이 작성한 게시글만 삭제할 수 있습니다.");
         }
 

@@ -18,7 +18,7 @@ public class CommentFromDto {
         return CommentFromDto.builder()
                 .id(comment.getId())
                 .content(comment.getContent())
-                .authorId(comment.getAuthorId())
+                .authorId(comment.getUser().getUserId())
                 .parentId(comment.getParent() != null ? comment.getParent().getId() : null)
                 .build();
     }

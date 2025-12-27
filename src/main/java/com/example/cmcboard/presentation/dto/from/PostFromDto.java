@@ -21,7 +21,7 @@ public class PostFromDto {
                 .id(post.getId())
                 .title(post.getTitle())
                 .content(post.getContent())
-                .authorId(post.getAuthorId())
+                .authorId(post.getUser().getUserId())
                 .category(post.getCategory())
                 .bookmarked(post.getBookmarked())
                 .build();
