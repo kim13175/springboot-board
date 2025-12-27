@@ -1,0 +1,7 @@
+.bg-spring { background-color: #30c623; }
+.btn-bg-spring { background-color: #30c623; transition: 0.4s ease; }
+.btn-bg-spring:hover { background-color: rgb(15, 142, 4); }
+
+.text-bg-spring { color: #30c623; transition: 0.4s ease; }
+.text-bg-spring:hover { color: rgb(15, 142, 4); transition: 0.4s ease; }
+.cursor { cursor: pointer; }

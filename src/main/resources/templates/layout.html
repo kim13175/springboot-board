@@ -1,10 +1,26 @@
+<!-- 부트르스트랩 전역으로 적용하기 위한 레이아웃 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>스프링 부트로 만든 게시판</title>
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+            rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+            crossorigin="anonymous"
+    >
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
 </head>
-<body>
-$END$
-</body>
+<main>
+    <nav class="navbar navbar-expand-lg bg-spring border-bottom">
+        <div class="container-fluid">
+            <a class="mt-4 text-start text-white fs-3 text-decoration-none" th:href="@{/}">스프링 게시판</a>
+        </div>
+    </nav>
+    <div layout:fragment="content"></div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"
+></script>
 </html>

@@ -20,7 +20,7 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/signup", "/login").permitAll()
+                        .requestMatchers("/css/**", "/signup", "/login").permitAll()
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").hasRole("ADMIN")
                         // 나머지 기능은 로그인 해야 접근 가능
                         .anyRequest().authenticated()
@@ -28,6 +28,9 @@ public class SecurityConfig {
                 .formLogin(form -> form
                         .loginPage("/login")
                         .defaultSuccessUrl("/post")
+                        .usernameParameter("loginId")
+                        .passwordParameter("password")
+                        .failureUrl("/login?error")
                         .permitAll()
                 )
                 .logout(logout -> logout

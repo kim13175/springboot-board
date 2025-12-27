@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <title>로그인</title>
 </head>
 <body>
-$END$
+    <div layout:fragment="content" class="container mt-4">
+        <div class="d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+            <div class="card shadow-sm p-4" style="width: 100%; max-width: 400px;">
+                <h2 class="text-center fw-bold mb-4">로그인</h2>
+                <form th:action="@{/login}" method="post">
+                    <label for="loginId" class="form-label">ID</label>
+                    <input id="loginId" name="loginId" class="form-control">
+                    <label for="password-input" class="form-label mt-2">PASSWORD</label>
+                    <input type="password" id="password-input" name="password" class="form-control" aria-describedby="passwordDescription">
+                    <div class="form-text mt-2 mb-4">
+                        비밀 번호는 12자 내로 작성해주세요.
+                    </div>
+                    <button type="submit" class="btn text-white fs-4 fw-bold btn-bg-spring w-100 py-2">로그인</button>
+                </form>
+                <div class="d-flex mt-2 align-items-center justify-content-end">
+                    <a class="text-bg-spring cursor" th:href="@{/join}">회원가입</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
