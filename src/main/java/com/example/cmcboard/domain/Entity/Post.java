@@ -20,13 +20,14 @@ public class Post {
     private String content;
 
     @Column(nullable = false)
-    private Long authorId;
-
-    @Column(nullable = false)
     private String category;
 
     @Column(nullable = false)
     private Boolean bookmarked = false;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "author_id")
+    private User user;
 
     public void update(String title, String content, String category) {
         this.title = title;
