@@ -5,14 +5,13 @@ import com.example.cmcboard.global.security.CustomUserDetail;
 import com.example.cmcboard.presentation.dto.from.UserFromDto;
 import com.example.cmcboard.presentation.dto.to.UserToEntity;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/api/user")
 @RequiredArgsConstructor
-@Slf4j
 @RestController
 public class UserController {
     private final UserService userService;
@@ -23,13 +22,12 @@ public class UserController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<Long> signup(@ModelAttribute UserToEntity dto) {
-        log.info("--------- in");
+    public ResponseEntity<?> signup(@RequestBody UserToEntity dto) {
         try {
             Long userId = userService.signUp(dto);
-            return ResponseEntity.ok(userId);
+            return ResponseEntity.status(HttpStatus.CREATED).body(userId);
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 }

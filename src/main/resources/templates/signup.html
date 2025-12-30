@@ -11,7 +11,7 @@
     <div class="d-flex justify-content-center align-items-center" style="min-height: 70vh;">
         <div class="card shadow-sm p-4" style="width: 100%; max-width: 400px;">
             <h2 class="text-center fw-bold mb-4">회원 가입</h2>
-            <form th:action="@{/api/user/signup}" method="post">
+            <form id="signupForm" method="post">
                 <div class="mb-4">
                     <label for="username" class="form-label">이름</label>
                     <input id="username" name="userName" class="form-control" minlength="2" maxlength="8">
@@ -27,10 +27,11 @@
                            minlength="4" maxlength="12"
                     >
                 </div>
-                <button type="submit" class="btn text-white fs-4 fw-bold btn-bg-spring w-100 py-2">회원가입</button>
+                <button type="button" id="submitBtn" class="btn text-white fs-4 fw-bold btn-bg-spring w-100 py-2">회원가입</button>
             </form>
         </div>
     </div>
 </div>
 </body>
+<script th:src="@{/js/signup.js}"></script>
 </html>
