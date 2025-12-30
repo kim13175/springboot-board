@@ -25,6 +25,7 @@ public class SecurityConfig {
                         .requestMatchers("/css/**", "/sign-up", "/login", "/h2-console/**").permitAll()
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").hasRole("ADMIN")
                         // 나머지 기능은 로그인 해야 접근 가능
+                        .requestMatchers("/api/user/signup").permitAll()
                         .anyRequest().authenticated()
                 )
                 .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin))

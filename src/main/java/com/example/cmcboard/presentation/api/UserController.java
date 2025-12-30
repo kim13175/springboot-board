@@ -1,18 +1,19 @@
-package com.example.cmcboard.presentation.controller;
+package com.example.cmcboard.presentation.api;
 
 import com.example.cmcboard.application.service.UserService;
 import com.example.cmcboard.global.security.CustomUserDetail;
 import com.example.cmcboard.presentation.dto.from.UserFromDto;
 import com.example.cmcboard.presentation.dto.to.UserToEntity;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/api/user")
 @RequiredArgsConstructor
+@Slf4j
+@RestController
 public class UserController {
     private final UserService userService;
 
@@ -22,7 +23,8 @@ public class UserController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<Long> signup(UserToEntity dto) {
+    public ResponseEntity<Long> signup(@ModelAttribute UserToEntity dto) {
+        log.info("--------- in");
         try {
             Long userId = userService.signUp(dto);
             return ResponseEntity.ok(userId);

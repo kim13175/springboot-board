@@ -1,4 +1,4 @@
-package com.example.cmcboard.presentation.controller;
+package com.example.cmcboard.presentation.api;
 
 import com.example.cmcboard.application.service.PostService;
 import com.example.cmcboard.global.security.CustomUserDetail;

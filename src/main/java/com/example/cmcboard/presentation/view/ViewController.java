@@ -1,4 +1,4 @@
-package com.example.cmcboard.view;
+package com.example.cmcboard.presentation.view;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

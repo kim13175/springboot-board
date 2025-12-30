@@ -1,7 +1,6 @@
-package com.example.cmcboard.presentation.controller;
+package com.example.cmcboard.presentation.api;
 
 import com.example.cmcboard.application.service.CommentService;
-import com.example.cmcboard.domain.Entity.User;
 import com.example.cmcboard.global.security.CustomUserDetail;
 import com.example.cmcboard.presentation.dto.from.CommentFromDto;
 import com.example.cmcboard.presentation.dto.to.CommentToEntity;
